@@ -25,19 +25,45 @@ public:
     }
 
     void enqueue(int newItem) {
+        if (isFull()) {
+            cout << "Queue Overflow\n";
+            return;
+        }
+        data[rear++] = newItem;
         // TODO: Implement this
     }
 
     void dequeue() {
+		if (isEmpty()) {
+            cout << "Queue Underflow\n";
+            return;
+        }
+        // move left
+        for (int i = 1; i < rear; ++i) {
+            data[i - 1] = data[i];
+        }
+        --rear;
         // TODO: Implement this with shifting
     }
 
     int search(int target) {
+		for (int i = 0; i < rear; ++i) {
+            if (data[i] == target) return i; // basic for loop search
+        }
         // TODO: Implement this
         return -1;
     }
 
     void display() {
+		if (isEmpty()) {
+            cout << "[ ]\n";
+            return;
+        }
+        cout << "[ ";
+        for (int i = 0; i < rear; ++i) { // for loop printing
+            cout << data[i] << (i + 1 < rear ? " " : ""); //if theres an element after this index it prints space, if not no space
+        }
+        cout << " ]\n";
         // TODO: Print all elements from front (index 0) to rear - 1
     }
 };
