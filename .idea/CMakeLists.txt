@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(_idea
         fa25-classwork.iml
         modules.xml
-        vcs.xml)
+        vcs.xml
+        ../ArrayQueue.cpp
+        ../ArrayStack.cpp)
