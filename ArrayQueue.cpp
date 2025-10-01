@@ -90,21 +90,50 @@ public:
         return front == rear;
     }
 
-    void enqueue(int newItem) {
+    void enqueue(int newItem) { //no need to edit from case 1
+        if (isFull()) {
+            cout << "Queue Overflow\n";
+            return;
+        }
+        data[rear++] = newItem;
         // TODO: Implement this
+
     }
 
     void dequeue() {
+        if (isEmpty()) {
+            cout << "Queue Underflow\n";
+            return;
+        }
+        // move left
+        front++;
         // TODO: Implement this
     }
 
     int search(int target) {
         // TODO: Implement this from front to rear - 1
+        for (int i = front; i < rear; ++i) {
+            if (data[i] == target) return i - front; // position relative to front
+        }
         return -1;
     }
 
     void display() {
         // TODO: Print all elements between front and rear
+        if (isEmpty()) {
+            cout << "[ ]\n";
+            return;
+        }
+        cout <<"[ ";
+        for (int i = front; i < rear; ++i) {
+            if (i + 1 != rear) {
+                cout << data[i] << " ";
+            }
+            else {
+                cout << data[i];
+            }
+        }
+        cout << " ]\n";
     }
 };
 
@@ -157,8 +186,8 @@ int main() {
     CircularQueue q3;
 
     // TODO: Uncomment and test each class one by one
-    // q1.enqueue(10);
-    // q1.display();
+    q1.enqueue(10);
+    q1.display();
 
     // q2.enqueue(20);
     // q2.display();
